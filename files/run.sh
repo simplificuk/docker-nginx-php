@@ -3,4 +3,4 @@ crond
 php-fpm
 nginx
 
-read
+echo "NGINX terminated"
