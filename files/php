@@ -4,5 +4,15 @@ location ~ \.php$ {
     fastcgi_index  index.php;
     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
     include        fastcgi_params;
-    fastcgi_param  HTTPS $https;
+
+    set $fe_https "off";
+    if ($http_x_forwarded_proto = "https") {
+      set $fe_https "on";
+    }
+    if ($https = "on") {
+      set $fe_https "on";
+    }
+
+    fastcgi_param  HTTPS $fe_https;
+    fastcgi_param  FE_HTTPS $fe_https;
 }
