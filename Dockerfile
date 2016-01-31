@@ -3,6 +3,8 @@ RUN apk add --no-cache bash nginx ca-certificates php-fpm php-json php-zlib php-
 ADD files/run.sh /run.sh
 RUN chmod +x /run.sh
 ADD files/nginx.conf /etc/nginx/nginx.conf
+ADD files/00-default.conf /etc/nginx/conf.d/00-default.conf
+ADD files/php /etc/nginx/php
 ADD files/php-fpm.conf /etc/php/php-fpm.conf
 
 EXPOSE 80
