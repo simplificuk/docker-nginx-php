@@ -3,6 +3,7 @@ location ~ \.php$ {
     fastcgi_pass   127.0.0.1:9000;
     fastcgi_index  index.php;
     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    fastcgi_read_timeout 600; # 10 minute read timeout...
     include        fastcgi_params;
 
     set $fe_https "off";
